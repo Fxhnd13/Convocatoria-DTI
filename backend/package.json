@@ -18,5 +18,13 @@
   "homepage": "https://github.com/Fxhnd13/Convocatoria-DTI#readme",
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.13.0"
   }
 }
