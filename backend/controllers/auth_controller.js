@@ -11,7 +11,7 @@ const login = async (req, res) => {
         }else{
             bcrypt.compare(req.body.password,user.password).then(areEqual =>{
                 if(areEqual){
-                    const token = jwt.sign({dpi: user.dpi}, authentication_conf.key);
+                    const token = jwt.sign({cui: user.cui}, authentication_conf.key);
                     res.status(200).json({name: user.name, token: token});
                 }else{
                     res.status(403).json({information_message:"La contraseña proporcionada no es la correcta."});
