@@ -1,4 +1,4 @@
-const { sequelize } = require("../db/credentials");
+const { sequelize } = require("../confs/credentials");
 const { DataTypes } = require('sequelize');
 
 var Institution = sequelize.define(
@@ -9,8 +9,8 @@ var Institution = sequelize.define(
             allowNull: false,
             autoIncrement: true
         },
-        Institution:{
-            type: DataTypes.TEXT,
+        institution:{
+            type: DataTypes.STRING(20),
             allowNull: false
         }
     }, {
