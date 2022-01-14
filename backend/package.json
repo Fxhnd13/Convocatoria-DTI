@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Fxhnd13/Convocatoria-DTI/issues"
   },
-  "homepage": "https://github.com/Fxhnd13/Convocatoria-DTI#readme"
+  "homepage": "https://github.com/Fxhnd13/Convocatoria-DTI#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
