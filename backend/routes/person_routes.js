@@ -1,26 +1,13 @@
-const authentication_conf = require("../confs/config"); //Aquí será para usar la llave básica de encriptación
-const jwt = require('jsonwebtoken'); //Indicamos que usaremos JsonWebToken
-const bcrypt = require("bcrypt");
+const { Router } = require('express'); //Que usaremos la funcion Router, del paquete express
+const router = Router(); //Creamos un router
 
-const { Person } = require('../models/person');
+const {create_person, get_person, get_all_people, update_person, delete_person} = require('../controllers/person_controller');
 
-const login = async (req, res) => {
-    Person.findOne({where:{username: req.body.username}, raw: true}).then(user =>{
-        if(user == null){
-            res.status(403).json({information_message:"El usuario "+req.body.username+" no se encuentra registrado"});
-        }else{
-            bcrypt.compare(req.body.password,user.password).then(areEqual =>{
-                if(areEqual){
-                    const token = jwt.sign({dpi: user.dpi}, authentication_conf.key);
-                    res.status(200).json({name: user.name, token: token});
-                }else{
-                    res.status(403).json({information_message:"La contraseña proporcionada no es la correcta."});
-                }
-            });
-        }
-    });
-};
+router.get('/person',get_person);
+router.get('/people', get_all_people);
+router.post('/person', create_person); //Al hacer un get en esta ubicacion se ejecuta el metodo login
+router.put('/person', update_person);
+router.delete('/person', delete_person);
 
-module.exports = {
-    login
-}
+
+module.exports = router;

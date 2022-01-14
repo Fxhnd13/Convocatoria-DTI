@@ -1,7 +1,7 @@
 const { sequelize } = require("../confs/credentials");
 const { DataTypes } = require('sequelize');
 
-const Person = sequelize.define(
+var Person = sequelize.define(
     'person' , {
         cui:{
             primaryKey: true,
@@ -9,15 +9,15 @@ const Person = sequelize.define(
             allowNull: false
         },
         name:{
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING(30),
             allowNull: false
         },
         last_name:{
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING(30),
             allowNull: false
         },
         address:{
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING(50),
             allowNull: false
         },
         phone_number: {
@@ -29,12 +29,12 @@ const Person = sequelize.define(
             allowNull: true
         },
         username:{
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING(20),
             allowNull: false,
             unique: true
         },
         password:{
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING(200),
             allowNull: false
         }
     }, {
