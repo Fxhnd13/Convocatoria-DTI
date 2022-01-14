@@ -1,4 +1,4 @@
-const { sequelize } = require("../db/credentials");
+const { sequelize } = require("../confs/credentials");
 const { DataTypes } = require('sequelize');
 const { Person } = require('./person');
 const { Institution } = require("./institution");
@@ -16,7 +16,7 @@ var Academic_Achievement = sequelize.define(
             allowNull: false
         },
         tittle:{
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING(25),
             allowNull: false
         },
         cui: {
