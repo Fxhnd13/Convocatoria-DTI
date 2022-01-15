@@ -12,7 +12,7 @@
                                 <li><a class="dropdown-item" href="../services/person_service.php?cui=<?php echo $_SESSION['cui'] ?>&action=one">Ver perfil</a></li>
                                 <li><a class="dropdown-item" href="../services/logout.php">Cerrar Sesión</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Jose Soberanis</a></li>
+                                <li><a class="dropdown-item" href="#"><?php echo $_SESSION['username'] ?></a></li>
                             </ul>
                         </li>
                     <?php } else { ?>

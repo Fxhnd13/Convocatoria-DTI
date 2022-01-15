@@ -100,9 +100,6 @@
                                             <button class="btn btn-link" type="submit" name="action" value="one">Editar Informacion</button>
                                         </li>
                                       </form>
-                                      <li>
-                                        <button class="btn btn-link" data-toggle="modal" data-target="#EliminarCuenta">Eliminar Perfil</button>
-                                      </li>
                                     </ul>
                                   </div>
                               </div>

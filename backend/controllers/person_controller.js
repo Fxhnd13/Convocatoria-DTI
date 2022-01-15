@@ -76,7 +76,6 @@ const get_all_people = async (req, res) => {
             limit: 1
         }
     }).then(persons =>{
-        console.log(persons);
         res.status(200).json(persons);
     });
 };
