@@ -10,7 +10,7 @@ var Performance_Area = sequelize.define(
             autoIncrement: true
         },
         performance_area: {
-            type: DataTypes.STRING(25),
+            type: DataTypes.STRING(30),
             allowNull: false
         }
     }, {

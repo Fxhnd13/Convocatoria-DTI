@@ -16,7 +16,7 @@ var Academic_Achievement = sequelize.define(
             allowNull: false
         },
         tittle:{
-            type: DataTypes.STRING(25),
+            type: DataTypes.STRING(40),
             allowNull: false
         },
         cui: {
