@@ -1,13 +1,17 @@
 const {Person} = require('../models/person');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const { Academic_Achievement } = require('../models/academic_achievement');
+const { Institution } = require('../models/institution');
+const { Performance_Area } = require('../models/performance_area');
+const { Area_Assignment } = require('../models/area_assignment');
 
 const BCRYPT_SALT_ROUNDS = 3;
 
 const create_person = async (req, res) => {
     bcrypt.hash(req.body.password,BCRYPT_SALT_ROUNDS).then(hashed_password => {
         Person.create({
-            dpi: req.body.dpi,
+            cui: req.body.cui,
             name: req.body.name,
             last_name: req.body.last_name,
             address: req.body.address,
@@ -51,9 +55,16 @@ const get_person = async (req, res) => {
     if(session == null){
         res.status(403).json({information_message: 'No posee permiso para acceder a esta información.'});
     }else{
-        Person.findOne({where:{cui: session.cui}}).then(person=>{
-            res.status(200).json({person});
-        })
+        let person_promisse = Person.findOne({where:{cui: session.cui}});
+        let achievements_promisse = Academic_Achievement.findAll({where:{cui: session.cui}, include: Institution});
+        let areas_promisse = Area_Assignment.findAll({where:{cui: session.cui}, include: Performance_Area});
+        Promise.all([person_promisse, achievements_promisse, areas_promisse]).then(values=>{
+            res.status(200).json({
+                person: values[0],
+                achievements: values[1],
+                areas: values[2]
+            });
+        });
     }
 };
 
@@ -61,11 +72,11 @@ const get_all_people = async (req, res) => {
     Person.findAll({
         include:{
             model: Academic_Achievement, 
-            order: ['year','DESC'],
+            order: [['year','DESC']],
             limit: 1
-        },
-        raw: true
+        }
     }).then(persons =>{
+        console.log(persons);
         res.status(200).json(persons);
     });
 };

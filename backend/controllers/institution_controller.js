@@ -2,7 +2,14 @@ const {Institution} = require('../models/institution');
 
 const get_institutions = async (req, res) => {
     Institution.findAll({raw: true}).then(institutions=>{
+        console.log(institutions);
         res.status(200).json(institutions);
+    });
+};
+
+const get_institution = async (req, res) => {
+    Institution.findOne({raw: true}, {where:{id_institution: req.body.id_institution}}).then(institution=>{
+        res.status(200).json(institution);
     });
 };
 
@@ -35,6 +42,7 @@ const delete_institution = async (req, res) => {
 module.exports = {
     create_institution,
     update_institution,
+    get_institution,
     get_institutions,
     delete_institution
 }

@@ -12,7 +12,7 @@ var Area_Assignment = sequelize.define(
             allowNull: false,
             autoIncrement: true
         },
-        performance_area: {
+        id_area: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
@@ -28,10 +28,10 @@ var Area_Assignment = sequelize.define(
 
 //----------------------------------------------------------------------------
 Person.hasMany(Area_Assignment,{foreignKey: 'cui'});
-Performance_Area.hasMany(Area_Assignment,{foreignKey: 'performance_area'});
+Performance_Area.hasMany(Area_Assignment,{foreignKey: 'id_area'});
 Area_Assignment.belongsTo(Person,{foreignKey: 'cui'});
-Area_Assignment.belongsTo(Performance_Area,{foreignKey: 'performance_area'});
+Area_Assignment.belongsTo(Performance_Area,{foreignKey: 'id_area'});
 
 module.exports = {
-    Performance_Area
+    Area_Assignment
 }

@@ -3,7 +3,7 @@ const router = Router(); //Creamos un router
 
 const {create_person, get_person, get_all_people, update_person, delete_person} = require('../controllers/person_controller');
 
-router.get('/person',get_person);
+router.get('/person', get_person);
 router.get('/people', get_all_people);
 router.post('/person', create_person); //Al hacer un get en esta ubicacion se ejecuta el metodo login
 router.put('/person', update_person);
